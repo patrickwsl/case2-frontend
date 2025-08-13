@@ -38,7 +38,7 @@ export default function DashboardContent() {
         <select
           value={selectedMonth}
           onChange={(e) => setSelectedMonth(Number(e.target.value))}
-          className="p-2 border rounded bg-white dark:bg-black border-gray-400 dark:border-gray-600"
+          className="text-black dark:text-white p-2 border rounded bg-white dark:bg-black border-gray-400 dark:border-gray-600"
         >
           {months.map((m) => (
             <option key={m.value} value={m.value}>{m.label}</option>
@@ -48,7 +48,7 @@ export default function DashboardContent() {
         <select
           value={selectedYear}
           onChange={(e) => setSelectedYear(Number(e.target.value))}
-          className="p-2 border rounded bg-white dark:bg-black border-gray-400 dark:border-gray-600"
+          className="text-black dark:text-white p-2 border rounded bg-white dark:bg-black border-gray-400 dark:border-gray-600"
         >
           {Array.from({ length: 5 }).map((_, i) => {
             const y = currentYear - i;
@@ -66,8 +66,8 @@ export default function DashboardContent() {
       </div>
 
       {/* tabela / lista dos clientes com seus valores */}
-      <div className="overflow-x-auto bg-white dark:bg-black rounded shadow p-4">
-        <table className="w-full table-auto text-neonBlue dark:text-neonBlue">
+      <div className="overflow-x-auto bg-gray-300 dark:bg-gray-500 rounded shadow p-4">
+        <table className="w-full table-auto text-black dark:text-white">
           <thead>
             <tr className="border-b border-gray-300 dark:border-gray-600">
               <th className="text-left p-2">Cliente</th>
@@ -96,7 +96,7 @@ export default function DashboardContent() {
 
 function Card({ title, value }: { title: string; value: number }) {
   return (
-    <div className="bg-neonBlue dark:bg-neonPink text-black dark:text-white rounded p-4 shadow font-semibold text-center">
+    <div className="bg-gray-300 dark:bg-gray-500 text-black dark:text-white rounded p-4 shadow font-semibold text-center">
       <div className="text-lg">{title}</div>
       <div className="text-2xl mt-2">{value.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' })}</div>
     </div>

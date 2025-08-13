@@ -4,6 +4,7 @@ import { useForm } from 'react-hook-form'
 import { useState } from 'react'
 import { useRouter } from 'next/navigation'
 import Link from 'next/link'
+import { useTheme } from '@/context/ThemeContext'
 
 type RegisterForm = {
   username: string
@@ -13,7 +14,8 @@ type RegisterForm = {
 }
 
 export default function RegisterPage() {
-  const { register, handleSubmit, watch } = useForm<RegisterForm>()
+  const { register, handleSubmit } = useForm<RegisterForm>()
+  const { theme, toggleTheme } = useTheme()
   const [error, setError] = useState<string | null>(null)
   const router = useRouter()
 
@@ -24,52 +26,69 @@ export default function RegisterPage() {
       return
     }
     try {
-      // Mock: só simula sucesso e vai pra home direto
       alert('Cadastro realizado com sucesso!')
       router.push('/home')
-    } catch (err) {
+    } catch {
       setError('Erro ao cadastrar')
     }
   }
 
   return (
-    <div className="min-h-screen flex items-center justify-center bg-black dark:bg-white p-6">
+    <div className="min-h-screen flex items-center justify-center bg-gray-400 dark:bg-gray-400 p-6 relative">
+      
+      <div className="absolute top-4 right-4 flex items-center gap-3">
+        <span className="text-sm font-medium text-gray-800 dark:text-gray-200">
+          {theme === "light" ? "Modo Claro" : "Modo Escuro"}
+        </span>
+        <button
+          onClick={toggleTheme}
+          aria-label="Alternar tema"
+          className={`relative inline-flex h-6 w-11 items-center rounded-full transition-colors duration-300
+            ${theme === "light" ? "bg-gray-300" : "bg-gray-500"}`}
+        >
+          <span
+            className={`inline-block h-4 w-4 transform rounded-full bg-white shadow transition-transform duration-300
+              ${theme === "light" ? "translate-x-1" : "translate-x-6"}`}
+          />
+        </button>
+      </div>
+
       <form
         onSubmit={handleSubmit(onSubmit)}
-        className="bg-black dark:bg-white p-8 rounded shadow-md w-full max-w-md text-neonBlue dark:text-black"
+        className="bg-gray-300 dark:bg-gray-500 p-8 rounded shadow-md w-full max-w-md"
       >
-        <h1 className="text-3xl font-bold mb-6 select-none">Cadastro</h1>
+        <h1 className="text-black dark:text-white text-3xl font-bold mb-6 select-none">Cadastro</h1>
 
-        <label className="block mb-2 font-semibold">Username</label>
+        <label className="text-black dark:text-white block mb-2 font-semibold">Username</label>
         <input
           {...register('username')}
-          className="w-full p-2 mb-4 rounded border border-neonBlue bg-black dark:bg-white text-neonBlue dark:text-black focus:outline-none"
+          className="w-full p-2 mb-4 rounded border border-neonBlue bg-gray-500 dark:bg-white text-neonBlue dark:text-black focus:outline-none"
         />
 
-        <label className="block mb-2 font-semibold">Email</label>
+        <label className="text-black dark:text-white block mb-2 font-semibold">Email</label>
         <input
           {...register('email')}
           type="email"
-          className="w-full p-2 mb-4 rounded border border-neonBlue bg-black dark:bg-white text-neonBlue dark:text-black focus:outline-none"
+          className="w-full p-2 mb-4 rounded border border-neonBlue bg-gray-500 dark:bg-white text-neonBlue dark:text-black focus:outline-none"
         />
 
-        <label className="block mb-2 font-semibold">Password</label>
+        <label className="text-black dark:text-white block mb-2 font-semibold">Password</label>
         <input
           {...register('password')}
           type="password"
-          className="w-full p-2 mb-4 rounded border border-neonBlue bg-black dark:bg-white text-neonBlue dark:text-black focus:outline-none"
+          className="w-full p-2 mb-4 rounded border border-neonBlue bg-gray-500 dark:bg-white text-neonBlue dark:text-black focus:outline-none"
         />
 
-        <label className="block mb-2 font-semibold">Confirmar Password</label>
+        <label className="text-black dark:text-white block mb-2 font-semibold">Confirmar Password</label>
         <input
           {...register('confirmPassword')}
           type="password"
-          className="w-full p-2 mb-6 rounded border border-neonBlue bg-black dark:bg-white text-neonBlue dark:text-black focus:outline-none"
+          className="w-full p-2 mb-6 rounded border border-neonBlue bg-gray-500 dark:bg-white text-neonBlue dark:text-black focus:outline-none"
         />
 
         <button
           type="submit"
-          className="w-full bg-neonPink text-black py-2 rounded hover:bg-neonBlue transition font-semibold"
+          className="w-full bg-gray-200 dark:bg-gray-200 text-black dark:text-black py-2 rounded hover:bg-neonBlue dark:hover:bg-gray-400 transition font-semibold"
         >
           Cadastrar
         </button>
@@ -77,7 +96,7 @@ export default function RegisterPage() {
         {error && <p className="mt-4 text-red-500">{error}</p>}
 
         <div className="mt-6 text-center">
-          <Link href="/" className="text-neonBlue hover:text-neonPink">
+          <Link href="/" className="text-black hover:text-neonBlue dark:text-white dark:hover:text-neonBlue">
             Já tem conta? Faça login
           </Link>
         </div>

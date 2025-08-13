@@ -18,8 +18,8 @@ export default function Sidebar({ onSelect, activePage }: SidebarProps) {
           className={`text-left px-4 py-2 rounded transition-colors
             ${
               activePage === page
-                ? 'bg-neonBlue text-black dark:bg-neonPink dark:text-black font-semibold'
-                : 'text-gray-700 dark:text-gray-300 hover:bg-gray-300 dark:hover:bg-gray-700'
+                ? 'bg-gray-300 text-black dark:bg-gray-500 dark:text-white font-semibold'
+                : 'text-black dark:text-gray-300 hover:bg-gray-300 dark:hover:bg-gray-700'
             }`}
         >
           {page[0].toUpperCase() + page.slice(1)}
