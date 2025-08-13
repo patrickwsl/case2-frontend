@@ -1,7 +1,23 @@
 export interface ClientCaptado {
   client_name: string;
-  captado_anual: number;
-  captado_semestral: number;
-  captado_mensal: number;
-  captado_semanal: number;
+  anual: {
+    captado: number;
+    atual: number;
+    rentabilidade: number;
+  };
+  semestral: {
+    captado: number;
+    atual: number;
+    rentabilidade: number;
+  };
+  mensal: {
+    captado: number;
+    atual: number;
+    rentabilidade: number;
+  };
+  semanal: {
+    captado: number;
+    atual: number;
+    rentabilidade: number;
+  };
 }

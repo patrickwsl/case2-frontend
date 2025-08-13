@@ -2,11 +2,11 @@ import { useEffect, useState } from "react";
 import { ClientCaptado } from "../interface";
 
 
-export function useCaptadoUpdates() {
+export function useCaptadoUpdates(month?: number, year?: number) {
   const [data, setData] = useState<ClientCaptado[]>([]);
 
   useEffect(() => {
-    const ws = new WebSocket("ws://localhost:8000/ws/prices");
+    const ws = new WebSocket(`ws://127.0.0.1:8000/ws/captado?month=${month}&year=${year}`);
 
     ws.onmessage = (event) => {
       const received = JSON.parse(event.data);
@@ -24,7 +24,7 @@ export function useCaptadoUpdates() {
     return () => {
       ws.close();
     };
-  }, []);
+  }, [month, year]);
 
   return data;
 }

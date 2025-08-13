@@ -23,17 +23,15 @@ export default function DashboardContent() {
   const [selectedMonth, setSelectedMonth] = useState<number>(new Date().getMonth() + 1);
   const [selectedYear, setSelectedYear] = useState<number>(currentYear);
 
-  const data = useCaptadoUpdates();
+  const data = useCaptadoUpdates(selectedMonth, selectedYear);
 
-  // Agregar totais (exemplo simples, considerar filtros se precisar)
-  const totalAnual = data.reduce((acc, c) => acc + c.captado_anual, 0);
-  const totalSemestral = data.reduce((acc, c) => acc + c.captado_semestral, 0);
-  const totalMensal = data.reduce((acc, c) => acc + c.captado_mensal, 0);
-  const totalSemanal = data.reduce((acc, c) => acc + c.captado_semanal, 0);
+  const totalAnual = data.reduce((acc, c) => acc + c.anual.captado, 0);
+  const totalSemestral = data.reduce((acc, c) => acc + c.semestral.captado, 0);
+  const totalMensal = data.reduce((acc, c) => acc + c.mensal.captado, 0);
+  const totalSemanal = data.reduce((acc, c) => acc + c.semanal.captado, 0);
 
   return (
     <div>
-      {/* filtros */}
       <div className="flex gap-4 mb-6">
         <select
           value={selectedMonth}
@@ -57,7 +55,6 @@ export default function DashboardContent() {
         </select>
       </div>
 
-      {/* cards */}
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 mb-6">
         <Card title="Captado Anual" value={totalAnual} />
         <Card title="Captado Semestral" value={totalSemestral} />
@@ -65,7 +62,6 @@ export default function DashboardContent() {
         <Card title="Captado Semanal" value={totalSemanal} />
       </div>
 
-      {/* tabela / lista dos clientes com seus valores */}
       <div className="overflow-x-auto bg-gray-300 dark:bg-gray-500 rounded shadow p-4">
         <table className="w-full table-auto text-black dark:text-white">
           <thead>
@@ -81,10 +77,10 @@ export default function DashboardContent() {
             {data.map((c: ClientCaptado) => (
               <tr key={c.client_name} className="border-b border-gray-200 dark:border-gray-700 hover:bg-gray-100 dark:hover:bg-gray-900">
                 <td className="p-2">{c.client_name}</td>
-                <td className="p-2 text-right">{c.captado_anual.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' })}</td>
-                <td className="p-2 text-right">{c.captado_semestral.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' })}</td>
-                <td className="p-2 text-right">{c.captado_mensal.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' })}</td>
-                <td className="p-2 text-right">{c.captado_semanal.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' })}</td>
+                <td className="p-2 text-right">{c.anual.captado.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' })}</td>
+                <td className="p-2 text-right">{c.semestral.captado.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' })}</td>
+                <td className="p-2 text-right">{c.mensal.captado.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' })}</td>
+                <td className="p-2 text-right">{c.semanal.captado.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' })}</td>
               </tr>
             ))}
           </tbody>
