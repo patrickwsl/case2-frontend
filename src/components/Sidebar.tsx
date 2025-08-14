@@ -11,7 +11,7 @@ export default function Sidebar({ onSelect, activePage }: SidebarProps) {
       <div className="flex justify-center drop-shadow-[0_0_10px_rgba(0,0,0,0.6)] dark:drop-shadow-[0_0_10px_rgba(255,255,255,0.8)] mb-4">
         <Image src="/componente.svg" alt="Logo" width={126} height={40} />
       </div>
-      {['dashboard', 'clients', 'allocations'].map((page) => (
+      {['dashboard', 'clients', 'allocations', 'assets'].map((page) => (
         <button
           key={page}
           onClick={() => onSelect(page)}

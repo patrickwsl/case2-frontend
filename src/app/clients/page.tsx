@@ -61,7 +61,7 @@ export default function ClientsPage() {
           }}
           className="px-4 py-2 rounded bg-green-500 text-white hover:bg-blue-600"
         >
-          Adicionar Cliente
+          Add Client
         </button>
       </div>
 

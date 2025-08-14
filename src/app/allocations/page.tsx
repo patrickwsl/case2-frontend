@@ -2,11 +2,11 @@
 
 import { useState, useEffect } from "react";
 
-import { Allocation } from "./interfaces";
+import { Allocation, AllocationCreateBySymbol } from "./interfaces";
 import AllocationModal from "./components/AllocationsModal";
 import { createAllocation, deleteAllocation, LoadAndGetAllocations, updateAllocation } from "@/services/allocations/data";
 import { LoadAndGetClients } from "@/services/client/data";
-import { LoadAndGetAssets } from "@/services/assets/data";
+import { LoadAndGetAssets, LoadAndGetAssetsByYahoo } from "@/services/assets/data";
 
 export default function AllocationsPage() {
   const [isActive, setIsActive] = useState<boolean | undefined>(true);
@@ -26,19 +26,17 @@ export default function AllocationsPage() {
   );
 
   const { data: clients, isLoading: isLoadingClients } = LoadAndGetClients();
+  const { data: assetsYahoo, isLoading: isLoadingAssetsYahoo } = LoadAndGetAssetsByYahoo();
   const { data: assets, isLoading: isLoadingAssets } = LoadAndGetAssets();
 
   if (isLoading) return <p>Loading...</p>;
 
   const hasNextPage = data && data.length === allocationsPerPage;
 
-  const handleSave = async (allocation: Omit<Allocation, "id">, id?: number) => {
+  
+  const handleSave = async (data: AllocationCreateBySymbol) => {
     try {
-      if (id) {
-        await updateAllocation(id, allocation);
-      } else {
-        await createAllocation(allocation);
-      }
+      await createAllocation(data);
       setShowModal(false);
       setAllocationToEdit(undefined);
       refetch();
@@ -168,8 +166,10 @@ export default function AllocationsPage() {
         onClose={() => setShowModal(false)}
         onSave={handleSave}
         clients={clients}
-        assets={assets}
+        assetsFromYahoo={assetsYahoo}
         allocationToEdit={allocationToEdit}
+        isLoadingAssetsYahoo={isLoadingAssetsYahoo}
+        isLoadingClients={isLoadingClients}
       />
     </div>
   );

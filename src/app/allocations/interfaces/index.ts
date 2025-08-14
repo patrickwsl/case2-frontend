@@ -13,3 +13,11 @@ export interface Allocation {
   asset?: Asset;
 }
 
+export interface AllocationCreateBySymbol {
+    client_id: number;
+    asset_symbol: string;
+    quantity: number;
+    buy_price: number;
+    buy_date: string;
+  }
+

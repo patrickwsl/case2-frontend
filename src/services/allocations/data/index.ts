@@ -1,4 +1,4 @@
-import { Allocation } from "@/app/allocations/interfaces";
+import { Allocation, AllocationCreateBySymbol } from "@/app/allocations/interfaces";
 import { api } from "@/lib/api";
 import { useQuery, UseQueryResult } from "@tanstack/react-query";
 
@@ -36,9 +36,8 @@ function LoadAndGetAllocations(
   });
 }
 
-async function createAllocation(allocation: Omit<Allocation, "id">) {
-  const { data } = await api.post<Allocation>("/allocations", allocation);
-  return data;
+async function createAllocation(data: AllocationCreateBySymbol) {
+  return await api.post("/allocations", data);
 }
 
 async function updateAllocation(id: number, allocation: Partial<Allocation>) {
