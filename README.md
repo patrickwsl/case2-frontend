@@ -132,7 +132,6 @@ C:.
 
 1. **Instalação das dependências**
 
-```bash
 npm install
 
 2. **Iniciar o servidor de desenvolvimento**
