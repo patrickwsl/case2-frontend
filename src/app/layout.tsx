@@ -2,7 +2,7 @@ import './globals.css'
 import Providers from '@/components/Providers'
 
 export const metadata = {
-  title: 'Anka Tech',
+  title: 'Finance Tech',
   description: 'Sistema de investimento',
 }
 
