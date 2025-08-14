@@ -34,7 +34,7 @@ export default function RegisterPage() {
   }
 
   return (
-    <div className="min-h-screen flex items-center justify-center bg-gray-400 dark:bg-gray-400 p-6 relative">
+    <div className="min-h-screen flex items-center justify-center bg-white dark:bg-black p-6 relative">
       
       <div className="absolute top-4 right-4 flex items-center gap-3">
         <span className="text-sm font-medium text-gray-800 dark:text-gray-200">
@@ -55,40 +55,40 @@ export default function RegisterPage() {
 
       <form
         onSubmit={handleSubmit(onSubmit)}
-        className="bg-gray-300 dark:bg-gray-500 p-8 rounded shadow-md w-full max-w-md"
+        className="bg-white dark:bg-black p-8 rounded shadow-md dark:shadow-[0_0_15px_#fff] w-full max-w-md text-neonBlue dark:text-white border border-black dark:border-neonBlue"
       >
-        <h1 className="text-black dark:text-white text-3xl font-bold mb-6 select-none">Cadastro</h1>
+        <h1 className="text-black dark:text-neonBlue text-3xl font-bold mb-6 select-none">Cadastro</h1>
 
-        <label className="text-black dark:text-white block mb-2 font-semibold">Username</label>
+        <label className="text-black dark:text-neonBlue block mb-2 font-semibold">Username</label>
         <input
           {...register('username')}
-          className="w-full p-2 mb-4 rounded border border-neonBlue bg-gray-500 dark:bg-white text-neonBlue dark:text-black focus:outline-none"
+          className="w-full p-2 mb-4 rounded border border-black dark:border-neonBlue bg-white dark:bg-black text-black dark:text-white focus:outline-none"
         />
 
-        <label className="text-black dark:text-white block mb-2 font-semibold">Email</label>
+        <label className="text-black dark:text-neonBlue block mb-2 font-semibold">Email</label>
         <input
           {...register('email')}
           type="email"
-          className="w-full p-2 mb-4 rounded border border-neonBlue bg-gray-500 dark:bg-white text-neonBlue dark:text-black focus:outline-none"
+          className="w-full p-2 mb-4 rounded border border-black dark:border-neonBlue bg-white dark:bg-black text-black dark:text-white focus:outline-none"
         />
 
-        <label className="text-black dark:text-white block mb-2 font-semibold">Password</label>
+        <label className="text-black dark:text-neonBlue block mb-2 font-semibold">Password</label>
         <input
           {...register('password')}
           type="password"
-          className="w-full p-2 mb-4 rounded border border-neonBlue bg-gray-500 dark:bg-white text-neonBlue dark:text-black focus:outline-none"
+          className="w-full p-2 mb-4 rounded border border-black dark:border-neonBlue bg-white dark:bg-black text-black dark:text-white focus:outline-none"
         />
 
-        <label className="text-black dark:text-white block mb-2 font-semibold">Confirmar Password</label>
+        <label className="text-black dark:text-neonBlue block mb-2 font-semibold">Confirmar Password</label>
         <input
           {...register('confirmPassword')}
           type="password"
-          className="w-full p-2 mb-6 rounded border border-neonBlue bg-gray-500 dark:bg-white text-neonBlue dark:text-black focus:outline-none"
+          className="w-full p-2 mb-6 rounded border border-black dark:border-neonBlue bg-white dark:bg-black text-black dark:text-white focus:outline-none"
         />
 
         <button
           type="submit"
-          className="w-full bg-gray-200 dark:bg-gray-200 text-black dark:text-black py-2 rounded hover:bg-neonBlue dark:hover:bg-gray-400 transition font-semibold"
+          className="w-full text-white dark:text-black bg-gray-600 dark:bg-gray-200 text-black py-2 rounded hover:bg-neonBlue dark:hover:bg-neonBlue transition font-semibold"
         >
           Cadastrar
         </button>
@@ -96,7 +96,7 @@ export default function RegisterPage() {
         {error && <p className="mt-4 text-red-500">{error}</p>}
 
         <div className="mt-6 text-center">
-          <Link href="/" className="text-black hover:text-neonBlue dark:text-white dark:hover:text-neonBlue">
+          <Link href="/" className="text-black dark:text-neonBlue hover:text-neonPink">
             Já tem conta? Faça login
           </Link>
         </div>

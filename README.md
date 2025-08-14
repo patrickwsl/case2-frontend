@@ -1,36 +1,172 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# Dashboard Captado - Frontend
 
-## Getting Started
+Este projeto é o front-end de um sistema de monitoramento de investimentos de clientes. Ele consome dados via WebSocket e exibe dashboards com os valores captados por períodos: anual, semestral, mensal e semanal.
 
-First, run the development server:
+---
+
+
+## Tecnologias utilizadas
+
+- **React** (com hooks e functional components)
+- **TypeScript** (tipagem segura)
+- **TailwindCSS** (estilização responsiva e customizável)
+- **WebSocket** (conexão em tempo real com o backend)
+
+---
+
+
+## Estrutura do projeto
+
+C:.
+|   .eslintrc.json
+|   Dockerfile
+|   estrutura.txt
+|   next-env.d.ts
+|   next.config.js
+|   package-lock.json
+|   package.json
+|   postcss.config.js
+|   README.md
+|   tailwind.config.ts
+|   tsconfig.json
+|               
++---public
+|       componente.svg
+|       next.svg
+|       vercel.svg
+|       
+\---src
+    |   AppRoutes.tsx
+    |   
+    +---app
+    |   |   globals.css
+    |   |   layout.tsx
+    |   |   page.tsx
+    |   |   
+    |   +---allocations
+    |   |   |   page.tsx
+    |   |   |   
+    |   |   +---components
+    |   |   |       AllocationsModal.tsx
+    |   |   |       
+    |   |   \---interfaces
+    |   |           index.ts
+    |   |           
+    |   +---assets
+    |   |       page.tsx
+    |   |       
+    |   +---clients
+    |   |   |   page.tsx
+    |   |   |   
+    |   |   +---components
+    |   |   |       ClientModal.tsx
+    |   |   |       
+    |   |   \---interfaces
+    |   |           ClientModal.ts
+    |   |           
+    |   +---dashboard
+    |   |       index.tsx
+    |   |       
+    |   +---home
+    |   |       page.tsx
+    |   |       
+    |   \---register
+    |           page.tsx
+    |           
+    +---components
+    |       Button.tsx
+    |       Header.tsx
+    |       LineChart.tsx
+    |       Providers.tsx
+    |       Sidebar.tsx
+    |       ThemeClassController.tsx
+    |       ThemeToggle.tsx
+    |       
+    +---context
+    |       ThemeContext.tsx
+    |       
+    +---hooks
+    +---lib
+    |       api.ts
+    |       
+    \---services
+        +---allocations
+        |   +---data
+        |   |       index.ts
+        |   |       
+        |   \---interfaces
+        +---assets
+        |   +---data
+        |   |       index.ts
+        |   |       
+        |   \---interfaces
+        |           index.ts
+        |           
+        +---client
+        |   +---data
+        |   |       index.ts
+        |   |       
+        |   \---interface
+        |           index.ts
+        |           
+        +---performance
+        |   \---data
+        |           index.ts
+        |           
+        +---user
+        |   +---data
+        |   |       index.ts
+        |   |       
+        |   \---interface
+        |           index.ts
+        |           
+        \---web_socket
+            +---data
+            |       index.ts
+            |       
+            \---interface
+                    index.ts
+
+
+## Configuração e execução
+
+1. **Instalação das dependências**
 
 ```bash
+npm install
+
+2. **Iniciar o servidor de desenvolvimento**
+
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+O aplicativo estará disponível em: http://localhost:3000 (ou conforme configurado no seu next.config.js / vite.config.ts).
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+## Uso
 
-## Learn More
+O dashboard exibe:
 
-To learn more about Next.js, take a look at the following resources:
+Filtros para selecionar mês e ano.
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+Cards com os totais captados: anual, semestral, mensal e semanal.
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+Tabela com cada cliente e seus valores detalhados.
 
-## Deploy on Vercel
+Os dados são atualizados em tempo real via WebSocket, consumindo o endpoint:
+ws://127.0.0.1:8000/ws/captado?month=<month>&year=<year>
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+## Customização
+
+Estilos: É possível ajustar cores e temas via TailwindCSS (dark mode já suportado).
+
+Filtros de período: O front envia os parâmetros month e year na URL do WebSocket.
+
+
+## Observações
+
+Certifique-se de que o backend está rodando e que o endpoint WebSocket está disponível.
+
+Os dados apresentados dependem dos registros de clientes e alocações no banco de dados.
+
+Valores monetários são exibidos em BRL (R$), mas podem ser ajustados conforme necessidade.

@@ -54,26 +54,26 @@ export default function LoginPage() {
 
       <form
         onSubmit={handleSubmit(onSubmit)}
-        className="bg-white dark:bg-black p-8 rounded shadow-md dark:shadow-[0_0_15px_#fff] w-full max-w-md text-neonBlue dark:text-white mt-20 rounded border border-black dark:border-neonBlue"
+        className="bg-white dark:bg-black p-8 rounded shadow-md dark:shadow-[0_0_15px_#fff] w-full max-w-md text-neonBlue dark:text-white mt-20 border border-black dark:border-neonBlue"
       >
-        <h1 className="text-black dark:text-neonBlue text-3xl font-bold mb-6 select-none color">Login</h1>
+        <h1 className="text-black dark:text-neonBlue text-3xl font-bold mb-6 select-none">Login</h1>
 
         <label className="text-black dark:text-neonBlue block mb-2 font-semibold">Username</label>
         <input
           {...register('username')}
-          className="w-full p-2 mb-4 rounded border border-black dark:border-neonBlue bg-white dark:bg-black text-neonBlue dark:text-white focus:outline-none"
+          className="w-full p-2 mb-4 rounded border border-black dark:border-neonBlue bg-white dark:bg-black text-black dark:text-white focus:outline-none"
         />
 
         <label className="text-black dark:text-neonBlue block mb-2 font-semibold">Password</label>
         <input
           {...register('password')}
           type="password"
-          className="w-full p-2 mb-6 rounded border border-black dark:border-neonBlue bg-white dark:bg-black text-neonBlue dark:text-white focus:outline-none"
+          className="w-full p-2 mb-6 rounded border border-black dark:border-neonBlue bg-white dark:bg-black text-black dark:text-white focus:outline-none"
         />
 
         <button
           type="submit"
-          className="w-full bg-neonPink text-black py-2 rounded hover:bg-neonBlue transition font-semibold"
+          className="w-full bg-gray-600 dark:bg-gray-200 text-white dark:text-black py-2 rounded hover:bg-neonBlue dark:hover:bg-neonBlue transition font-semibold"
         >
           Entrar
         </button>
