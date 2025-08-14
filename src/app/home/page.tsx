@@ -5,6 +5,7 @@ import Sidebar from '@/components/Sidebar'
 import Header from '@/components/Header'
 import DashboardContent from '../dashboard';
 import ClientsPage from '../clients/page';
+import AllocationsPage from '../allocations/page';
 
 export default function HomePage() {
   const [activePage, setActivePage] = useState('dashboard')
@@ -17,13 +18,9 @@ export default function HomePage() {
         <main className="flex-grow p-6">
             {activePage === 'dashboard' && <DashboardContent />}
             {activePage === 'clients' && <ClientsPage />}
-            {activePage === 'allocations' && <AllocationsContent />}
+            {activePage === 'allocations' && <AllocationsPage />}
         </main>
       </div>
     </div>
   )
-}
-
-function AllocationsContent() {
-  return <p>Conteúdo das alocações...</p>
 }

@@ -108,39 +108,13 @@ export default function ClientsPage() {
                       setShowModal(true);
                     }}
                   >
-                    <svg
-                      xmlns="http://www.w3.org/2000/svg"
-                      className="h-5 w-5 text-black dark:text-white"
-                      fill="none"
-                      viewBox="0 0 24 24"
-                      stroke="currentColor"
-                    >
-                      <path
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                        strokeWidth={2}
-                        d="M15.232 5.232l3.536 3.536M4 20h4.586l10.293-10.293a1 1 0 00-1.414-1.414L7.172 18.586A1 1 0 016 20z"
-                      />
-                    </svg>
+                    ✏️
                   </button>
                   <button
                     className="px-2 py-1 bg-red-500 rounded hover:bg-red-600"
                     onClick={() => handleDelete(client.id)}
                   >
-                    <svg
-                      xmlns="http://www.w3.org/2000/svg"
-                      className="h-5 w-5 text-white"
-                      fill="none"
-                      viewBox="0 0 24 24"
-                      stroke="currentColor"
-                    >
-                      <path
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                        strokeWidth={2}
-                        d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5-4h4a1 1 0 011 1v1H9V4a1 1 0 011-1z"
-                      />
-                    </svg>
+                    🗑️
                   </button>
                 </td>
               </tr>
