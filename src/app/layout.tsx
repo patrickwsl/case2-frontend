@@ -1,6 +1,5 @@
-import { ThemeProvider } from '@/context/ThemeContext'
 import './globals.css'
-import ThemeClassController from '@/components/ThemeClassController'
+import Providers from '@/components/Providers'
 
 export const metadata = {
   title: 'Anka Tech',
@@ -11,10 +10,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
   return (
     <html lang="pt-BR">
       <body>
-        <ThemeProvider>
-          <ThemeClassController />
-          {children}
-        </ThemeProvider>
+        <Providers>{children}</Providers>
       </body>
     </html>
   )

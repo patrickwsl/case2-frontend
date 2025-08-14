@@ -4,6 +4,7 @@ import { useState } from 'react'
 import Sidebar from '@/components/Sidebar'
 import Header from '@/components/Header'
 import DashboardContent from '../dashboard';
+import ClientsPage from '../clients/page';
 
 export default function HomePage() {
   const [activePage, setActivePage] = useState('dashboard')
@@ -15,7 +16,7 @@ export default function HomePage() {
         <Header />
         <main className="flex-grow p-6">
             {activePage === 'dashboard' && <DashboardContent />}
-            {activePage === 'clients' && <ClientsContent />}
+            {activePage === 'clients' && <ClientsPage />}
             {activePage === 'allocations' && <AllocationsContent />}
         </main>
       </div>
@@ -23,10 +24,6 @@ export default function HomePage() {
   )
 }
 
-
-function ClientsContent() {
-  return <p>Conteúdo dos clientes...</p>
-}
 function AllocationsContent() {
   return <p>Conteúdo das alocações...</p>
 }
